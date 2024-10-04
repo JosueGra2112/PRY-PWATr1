@@ -1,0 +1,68 @@
+
+.register-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* Alinea con el botón de búsqueda */
+}
+
+.search-button {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-button img,
+.search-button img,
+.action-button img {
+  margin-right: 10px;
+  max-width: 20px; /* Ajusta el tamaño de las imágenes */
+  height: auto; /* Mantiene la proporción */
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Añadir espacio entre los botones y la tabla */
+}
+
+.action-button-group {
+  display: flex;
+  justify-content: center; /* Centrar los botones dentro de la celda */
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.red-button {
+  background-color: red;
+  color: black;
+}
+
+.yellow-button {
+  background-color: yellow;
+  color: black;
+}
