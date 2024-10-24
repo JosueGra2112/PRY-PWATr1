@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
+
 import React, { useState } from 'react';
 import Header from './HeaderSe';
 import { Form, Upload, Button, message } from 'antd';

@@ -3,11 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Slider from 'react-slick';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import lup from '../IMG/SigaLogo.png';
-import SIGATEXT from '../IMG/SIGATEXT.png';
 import SIGA from '../IMG/SIGA.png';
 
 import IM1 from '../IMGCAR/IMG4.png';
@@ -79,7 +79,7 @@ const Inicio = () => {
       <main className="App-main">
         <img src={lup} alt="Lup" className="logo-lup" />
         <div className="sigatext-container">
-          <img src={SIGATEXT} alt="SIGATEXT" className="sigatext" />
+          <h1>SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA</h1>
           <img src={SIGA} alt="SIGA" className="siga" />
         </div>
       </main>
