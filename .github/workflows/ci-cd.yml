@@ -1,15 +1,12 @@
 name: PWA CI/CD Workflow
 
-
 on:
   push:
     branches:
-      - main
-      - development
+      - master
   pull_request:
     branches:
-      - main
-      - development
+      - master
   workflow_dispatch:
 
 jobs:
