@@ -1,5 +1,4 @@
 # 1. Estructura del Archivo YAML
-# Se define el nombre del flujo de trabajo (name: PWA CI/CD Workflow).
 name: PWA CI/CD Workflow
 
 # Configuración de los desencadenadores correctos (on:):
@@ -8,26 +7,26 @@ on:
     branches:
       - master
       - main
-      - development # Rama para desarrollo
+      - development
+      - feature/* # Agregamos ramas de características
   pull_request:
     branches:
       - master
       - main
-      - development # Rama para validación de cambios antes de fusión
-  workflow_dispatch: # Opción para activación manual (opcional)
+      - development
+      - feature/*
+  workflow_dispatch: # Opción para activación manual
 
 # 2. Configuración del Entorno
-# Sistema operativo correcto definido según las necesidades 
 jobs:
   build:
-    runs-on: ubuntu-latest # Configura el sistema operativo para las pruebas
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.X] # Especifica la versión de Node.js a usar
+        node-version: [18.X]
         
     steps:
-      # Instalación de dependencias del entorno (pe Node.js se configuran usando actions/setup-node@v2.)
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -36,8 +35,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Caché de dependencias para acelerar las compilaciones usando actions/cache@v2.
-      - name: Cache Node.js modules
+      - name: Install dependencies
+        run: npm ci # O npm install si no tienes package-lock.json
+
+      - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -45,16 +46,25 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
-        run: npm ci # Instala las dependencias del proyecto
-
+# 4. Etapa de Compilación
       - name: Build the project
         run: npm run build # Compila el proyecto
 
-      - name: Run tests
-        run: npm test # Ejecuta las pruebas usando Jest
+      # Guarda el artefacto de compilación
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifact
+          path: build/ # Ajusta la ruta según tu estructura de proyecto
 
-      - name: Deploy to Vercel
-        run: npx vercel --prod # Despliega en Vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }} # Token de acceso a Vercel
+# 5. Etapa de Pruebas (React)
+      - name: Run unit tests
+        run: npm test # Ejecuta las pruebas unitarias
+
+      # Si deseas incluir pruebas de E2E con Cypress
+      - name: Run end-to-end tests
+        run: npm run cypress:run # Asegúrate de que este comando esté configurado en tu package.json
+
+      # Ejecución de pruebas de cobertura
+      - name: Run tests with coverage
+        run: npm test -- --coverage # Ejecuta las pruebas y genera un reporte de cobertura
