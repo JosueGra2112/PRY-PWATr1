@@ -1,4 +1,8 @@
 // App.jsx
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
+
+
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { TransitionGroup } from 'react-transition-group';

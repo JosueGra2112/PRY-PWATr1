@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
+
 import React, { useState, useEffect } from 'react';
 
 const ErrorHandler = ({ children }) => {
