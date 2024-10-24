@@ -1,3 +1,4 @@
+import 'matchmedia-polyfill'; // Asegúrate de que esto esté al principio
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
