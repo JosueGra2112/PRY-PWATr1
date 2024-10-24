@@ -62,6 +62,15 @@ jobs:
         run: npm test # Ejecuta las pruebas unitarias
 
       # Si deseas incluir pruebas de E2E con Cypress
+      - name: Start the server
+        run: npm start & # Inicia el servidor en segundo plano
+
+      # Espera a que el servidor esté disponible
+      - name: Wait for server
+        run: |
+          echo "Waiting for server to start..."
+          sleep 10 # Espera 10 segundos para asegurarte de que el servidor esté listo
+
       - name: Run end-to-end tests
         run: npm run cypress:run # Asegúrate de que este comando esté configurado en tu package.json
 
