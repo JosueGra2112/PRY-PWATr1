@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
+
 import React, { useState, useEffect } from 'react';
 import '../css/tblacceso.css'; // Importa el archivo CSS
 

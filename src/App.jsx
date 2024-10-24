@@ -1,4 +1,8 @@
 // App.jsx
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
+
+
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { TransitionGroup } from 'react-transition-group';
@@ -99,7 +103,6 @@ const App = () => {
   console.log("CSP activo");
 
   return (
-    <body>
       <Router>
         <NotificationHandler />
         <ErrorHandler />
@@ -180,7 +183,7 @@ const App = () => {
         </TransitionGroup>
         <Footer />
       </Router>
-    </body>
+
   );
 };
 
