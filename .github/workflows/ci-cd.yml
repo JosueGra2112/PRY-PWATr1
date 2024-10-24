@@ -3,31 +3,36 @@ name: PWA CI/CD Workflow
 on:
   push:
     branches:
-      - master
-      - release/*
+      - main
+      - development
   pull_request:
     branches:
-      - master
-      - release/*
+      - main
+      - development
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [18.X]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build project
+      - name: Build the project
         run: npm run build
 
       - name: Run tests
         run: npm test
+
+      - name: Deploy to Vercel
+        run: npx vercel --prod
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
