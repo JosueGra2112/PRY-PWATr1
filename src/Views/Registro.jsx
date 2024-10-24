@@ -2,7 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Loginim from '../IMG/Login.png';
 import ReCAPTCHA from "react-google-recaptcha";
+
+// eslint-disable-next-line
 import politicasPDF from './PDF/Politicas_de_privacidad.pdf';
+
 import Header from './Header';
 import Breadcrumbs from './Breadcrumbs';
 
