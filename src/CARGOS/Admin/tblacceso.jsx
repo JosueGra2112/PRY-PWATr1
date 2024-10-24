@@ -14,7 +14,7 @@ const Expedientes = () => {
       .then(data => {
         console.log('Datos de usuarios:', data);
         // Actualiza el estado de los usuarios con el campo 'act' convertido a booleano
-        const updatedUsers = data.map(user => ({ ...user, act: user.act == '1' }));
+        const updatedUsers = data.map(user => ({ ...user, act: user.act === '1' }));
         setUsers(updatedUsers);
       })
       .catch(error => console.error('Error al obtener los datos de usuarios:', error));
@@ -22,7 +22,7 @@ const Expedientes = () => {
 
   const handleToggleActivation = async (user) => {
     try {
-      const updatedAct = user.act == '1' ? '0' : '1'; // Nuevo estado de activación
+      const updatedAct = user.act === '1' ? '0' : '1'; // Nuevo estado de activación
       console.log('Datos de solicitud:', { user: user.user, act: updatedAct }); // Agregar este registro de depuración para verificar los datos enviados
       //const response = await fetch('http://localhost/WebServices/ActEstadoUser.php', {
         const response = await fetch('https://sigaemail.host8b.me/ActEstadoUser.php', {

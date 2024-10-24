@@ -1,6 +1,5 @@
-// App.jsx
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { TransitionGroup } from 'react-transition-group';
 import { Helmet } from 'react-helmet';
 
@@ -28,7 +27,6 @@ import ResponderPregunta from './Views/ResponderPregunta';
 import RestaurarContraseña from './Views/RestaurarContraseña';
 import SessionTimeoutHandler from './Views/SessionTimeoutHandler';
 import ProtectedRoute from './Views/ProtectedRoute';
-import ViewsBit from './Views/ViewsBittacoras';
 import CargaAct from './Views/cargar';
 import DownAct from './Views/actDoc';
 
@@ -37,7 +35,6 @@ import DownAct from './Views/actDoc';
 import SesionAdmin from './CARGOS/Admin/sesionAdmin';
 import DiaEvent from './CARGOS/Admin/DiarioEvent';
 import UserControl from './CARGOS/Admin/UserAcceso';
-import CargaAlumnos from './CARGOS/Admin/CargaAlumnos';
 import TablaAlumnos from './CARGOS/Admin/TablaAlm';
 import TablaHistoral from './CARGOS/Admin/TablaHis';
 import BitacorasAd from './CARGOS/Admin/BitacorasAd';

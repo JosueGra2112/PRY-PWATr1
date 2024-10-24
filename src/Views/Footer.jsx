@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line
 import hidalgo from '../IMG/loghidalgo.png';
 import facebookImage from '../IMG/facebook.png';
 import emailImage from '../IMG/email.png';

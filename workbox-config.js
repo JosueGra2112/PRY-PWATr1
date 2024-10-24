@@ -1,10 +1,14 @@
 module.exports = {
-    globDirectory: 'build/', // Directorio de build donde se encuentran los archivos generados
-    globPatterns: [
-      '**/*.{js,css,html,png,jpg,svg}', // Almacena archivos generados de scripts, estilos, html, imágenes
-    ],
-    swSrc: 'public/firebase-messaging-sw.js', // Archivo fuente del service worker (ruta correcta)
-    swDest: 'build/service-worker.js', // Genera el service worker en la carpeta build
-    maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // Máximo 4MB por archivo
-  };
-  
+  globDirectory: 'build/',
+  globPatterns: [
+    '**/*.{js,css,html,png,jpg,svg,pdf}',
+  ],
+  swSrc: 'public/firebase-messaging-sw.js',
+  swDest: 'build/service-worker.js',
+  maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // Aumenta el límite a 8MB
+  globIgnores: [
+    '**/Politicas_de_privacidad.*',
+    '**/loghidalgo.*',
+    '**/bundle.js',
+  ],
+};
