@@ -1,27 +1,33 @@
+# 1. Estructura del Archivo YAML
+# Se define el nombre del flujo de trabajo (name: PWA CI/CD Workflow).
 name: PWA CI/CD Workflow
 
+# Configuración de los desencadenadores correctos (on:):
 on:
   push:
     branches:
       - master
       - main
-      - development
+      - development # Rama para desarrollo
   pull_request:
     branches:
       - master
       - main
-      - development
-  workflow_dispatch:
+      - development # Rama para validación de cambios antes de fusión
+  workflow_dispatch: # Opción para activación manual (opcional)
 
+# 2. Configuración del Entorno
+# Sistema operativo correcto definido según las necesidades 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Configura el sistema operativo para las pruebas
 
     strategy:
       matrix:
-        node-version: [18.X]
-
+        node-version: [18.X] # Especifica la versión de Node.js a usar
+        
     steps:
+      # Instalación de dependencias del entorno (pe Node.js se configuran usando actions/setup-node@v2.)
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -30,16 +36,25 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Caché de dependencias para acelerar las compilaciones usando actions/cache@v2.
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm ci
+        run: npm ci # Instala las dependencias del proyecto
 
       - name: Build the project
-        run: npm run build
+        run: npm run build # Compila el proyecto
 
       - name: Run tests
-        run: npm test
+        run: npm test # Ejecuta las pruebas usando Jest
 
       - name: Deploy to Vercel
-        run: npx vercel --prod
+        run: npx vercel --prod # Despliega en Vercel
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }} # Token de acceso a Vercel
