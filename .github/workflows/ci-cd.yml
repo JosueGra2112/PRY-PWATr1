@@ -52,7 +52,7 @@ jobs:
 
       # Guarda el artefacto de compilación
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3 # Actualiza a la versión 3
         with:
           name: build-artifact
           path: build/ # Ajusta la ruta según tu estructura de proyecto
