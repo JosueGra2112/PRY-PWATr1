@@ -20,7 +20,7 @@ import bitacoraImage from '../IMG/bitacora.png';
 import boletinImage from '../IMG/boletin.png';
 
 import Breadcrumbs from './Breadcrumbs';
-import './css/Inicio.css'; // Importamos el CSS personalizado
+import './css/inicio.css'; // Importamos el CSS personalizado
 
 const Inicio = () => {
   const botones = [
