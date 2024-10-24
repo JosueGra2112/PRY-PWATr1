@@ -56,7 +56,7 @@ if (workbox) {
 messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.notification?.title || 'Nueva notificación';
   const notificationOptions = {
-    body: payload.notification?.body || 'Tienes una nueva notificación',
+    body: payload.notification?.body || 'Tienes una nueva notificación SIGA',
     icon: './SigaLogo.png',
     data: {
       url: payload.data?.url || '/'
