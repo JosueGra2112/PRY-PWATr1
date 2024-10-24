@@ -111,6 +111,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "cross-env": "^7.0.3",
+    "matchmedia-polyfill": "^0.3.2",
+    "testcafe": "^3.6.2",
     "workbox-cli": "^7.1.0",
     "workbox-webpack-plugin": "^7.1.0"
   },
