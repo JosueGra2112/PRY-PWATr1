@@ -1,4 +1,5 @@
 // src/Views/Inicio.jsx
+//cambios realizados en responsive
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';

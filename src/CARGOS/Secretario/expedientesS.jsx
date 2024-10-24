@@ -1,3 +1,4 @@
+//implementacion de la camara
 import React, { useState, useEffect } from 'react';
 import '../css/Exp.css';
 import pdfimg from './PDF.png';
