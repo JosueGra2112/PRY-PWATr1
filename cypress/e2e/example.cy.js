@@ -1,8 +1,22 @@
-describe('My First Test', () => {
-    it('Visits the app', () => {
-        cy.visit('http://localhost:3000');
-        cy.wait(5000); // espera 5 segundos
-        cy.contains('SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA', { timeout: 20000 }); // espera 20 segundos
+// cypress/e2e/example.cy.js
+describe('Pruebas de la Aplicación', () => {
+    it('Visita la página de inicio y verifica el título', () => {
+        cy.visit('http://localhost:3000'); // Asegúrate de que este sea el correcto
+        cy.contains('SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA'); // Verifica que el título esté presente
     });
-      
+
+    it('Visita la página de Calendario y verifica el título', () => {
+        cy.visit('http://localhost:3000/#/Calendario'); // Asegúrate de que este sea el correcto
+        cy.contains('Calendarios escolares'); // Verifica que el título esté presente
+    });
+
+    it('Visita la página de Bitácora y verifica el título', () => {
+        cy.visit('http://localhost:3000/#/Bitacoras'); // Asegúrate de que este sea el correcto
+        cy.contains('BITÁCORA'); // Verifica que el título esté presente
+    });
+
+    it('Visita la página de Boletín y verifica el título', () => {
+        cy.visit('http://localhost:3000/#/Boletin'); // Asegúrate de que este sea el correcto
+        cy.contains('BOLETÍN'); // Verifica que el título esté presente
+    });
 });
