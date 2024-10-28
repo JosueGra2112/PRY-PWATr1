@@ -79,10 +79,7 @@ jobs:
       - name: Ejecutar pruebas de extremo a extremo (E2E) # Paso para ejecutar pruebas E2E
         run: npm run cypress:run # Comando para ejecutar pruebas E2E con Cypress
 
-# 8. Reporte de Cobertura en GitHub Pages (opcional)
-      - name: Publicar reporte de cobertura en GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coverage/lcov-report # Directorio del reporte de cobertura HTML
+# 8. Despliegue (opcional, requiere configuración adicional en Netlify/Vercel/Firebase)
+      - name: Despliegue en Producción
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')
+        run: echo "Configura el despliegue aquí en tu servicio preferido como Netlify, Vercel o Firebase"
