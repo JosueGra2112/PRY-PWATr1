@@ -1,0 +1,10 @@
+{
+    "extends": "@istanbuljs/nyc-config-babel",
+    "all": true,
+    "reporter": ["html", "text-summary"],
+    "include": ["src/**/*.js", "src/**/*.jsx"],
+    "exclude": ["**/*.test.js", "**/*.test.jsx", "cypress/**"],
+    "sourceMap": false,
+    "instrument": true
+  }
+  

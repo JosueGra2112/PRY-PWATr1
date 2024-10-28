@@ -1,8 +1,9 @@
 // cypress/support/index.js
-// Este archivo se ejecuta antes de los tests y se puede usar para agregar configuraciones globales.
 
+// Importa el soporte de cobertura de código para Cypress
+import '@cypress/code-coverage/support';
+
+// Evita que Cypress falle si hay excepciones no capturadas
 Cypress.on('uncaught:exception', (err, runnable) => {
-    // Evita que Cypress falle si hay excepciones no capturadas
-    return false;
-  });
-  
+  return false;
+});

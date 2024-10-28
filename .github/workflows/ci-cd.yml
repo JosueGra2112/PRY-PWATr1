@@ -15,6 +15,7 @@ on:
       - main
       - development
       - feature/*
+
   workflow_dispatch: # Permite activar manualmente el flujo de trabajo
 
 # 2. Configuración del Entorno
@@ -29,10 +30,7 @@ jobs:
       - name: Configurar Node.js # Paso para configurar Node.js
         uses: actions/setup-node@v2 # Acción para configurar Node.js
         with:
-          node-version: '18.X' # Versión de Node.js a utilizar
-
-      - name: Instalar dependencias # Paso para instalar dependencias
-        run: npm ci # Comando para instalar dependencias utilizando package-lock.json
+          node-version: '18.x' # Versión de Node.js a utilizar
 
       - name: Caché de dependencias # Paso para cachear dependencias
         uses: actions/cache@v2 # Acción para cachear dependencias
@@ -41,6 +39,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Clave única para el caché
           restore-keys: | # Claves alternativas para restaurar el caché
             ${{ runner.os }}-node-
+
+      - name: Instalar dependencias # Paso para instalar dependencias
+        run: npm ci # Comando para instalar dependencias utilizando package-lock.json
 
 # 4. Etapa de Compilación
       - name: Compilar el proyecto # Paso para compilar el proyecto
@@ -56,6 +57,17 @@ jobs:
       - name: Ejecutar pruebas unitarias # Paso para ejecutar pruebas unitarias
         run: npm test # Comando para ejecutar pruebas unitarias
 
+# 6. Pruebas de Cobertura
+      - name: Ejecutar pruebas con cobertura # Paso para ejecutar pruebas con cobertura
+        run: npm run test:coverage # Comando para ejecutar pruebas y generar un reporte de cobertura
+
+      - name: Guardar reporte de cobertura # Subir el reporte de cobertura como artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage # Ruta del reporte de cobertura
+
+# 7. Pruebas End-to-End (E2E)
       - name: Iniciar el servidor # Paso para iniciar el servidor
         run: npm start & # Inicia el servidor en segundo plano
 
@@ -64,8 +76,13 @@ jobs:
           echo "Esperando a que el servidor inicie..." # Mensaje de espera
           sleep 10 # Espera 10 segundos para asegurarse de que el servidor esté listo
 
-      - name: Ejecutar pruebas de extremo a extremo # Paso para ejecutar pruebas E2E
+      - name: Ejecutar pruebas de extremo a extremo (E2E) # Paso para ejecutar pruebas E2E
         run: npm run cypress:run # Comando para ejecutar pruebas E2E con Cypress
 
-      - name: Ejecutar pruebas con cobertura # Paso para ejecutar pruebas con cobertura
-        run: npm test -- --coverage # Comando para ejecutar pruebas y generar un reporte de cobertura
+# 8. Reporte de Cobertura en GitHub Pages (opcional)
+      - name: Publicar reporte de cobertura en GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage/lcov-report # Directorio del reporte de cobertura HTML
