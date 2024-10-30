@@ -89,6 +89,11 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/release/')
     
     steps:
+      # 1. Revisar código del repositorio (necesario para obtener los archivos de compilación)
+      - name: Revisar código
+        uses: actions/checkout@v2
+
+      # 2. Desplegar aplicación (placeholder o configurado según servicio)
       - name: Desplegar aplicación
         run: echo "Aquí iría la configuración para desplegar en el entorno de producción"
         # Configura aquí el servicio de despliegue específico como Netlify, Vercel o Firebase
