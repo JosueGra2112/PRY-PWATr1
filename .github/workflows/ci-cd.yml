@@ -38,26 +38,31 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # 4. Instalar dependencias
+      # 4. Configurar variables de entorno
+      - name: Configurar variables de entorno
+        env:
+          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+
+      # 5. Instalar dependencias
       - name: Instalar dependencias
         run: npm ci
 
-      # 5. Ejecución de pruebas unitarias
+      # 6. Ejecución de pruebas unitarias
       - name: Ejecutar pruebas unitarias
         run: npm test
 
-      # 6. Generar reporte de cobertura
+      # 7. Generar reporte de cobertura
       - name: Ejecutar pruebas con cobertura
         run: npm run test:coverage
 
-      # 7. Subir reporte de cobertura como artefacto
+      # 8. Subir reporte de cobertura como artefacto
       - name: Guardar reporte de cobertura
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: coverage
 
-      # 8. Pruebas E2E
+      # 9. Pruebas E2E
       - name: Iniciar el servidor para pruebas E2E
         run: npm start &
       - name: Esperar al servidor
@@ -67,11 +72,11 @@ jobs:
       - name: Ejecutar pruebas E2E
         run: npm run cypress:run
 
-      # 9. Compilación del proyecto
+      # 10. Compilación del proyecto
       - name: Compilar el proyecto
         run: npm run build
 
-      # 10. Subir artefactos de compilación
+      # 11. Subir artefactos de compilación
       - name: Subir artefactos de compilación
         uses: actions/upload-artifact@v3
         with:
