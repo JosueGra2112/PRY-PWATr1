@@ -11,6 +11,7 @@ on:
     branches:
       - main
       - master
+      
       - development
   workflow_dispatch: # Permite la ejecución manual del flujo de trabajo
 
