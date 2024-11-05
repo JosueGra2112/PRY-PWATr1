@@ -103,7 +103,6 @@ const App = () => {
   console.log("CSP activo");
 
   return (
-    <body>
       <Router>
         <NotificationHandler />
         <ErrorHandler />
@@ -184,7 +183,7 @@ const App = () => {
         </TransitionGroup>
         <Footer />
       </Router>
-    </body>
+
   );
 };
 

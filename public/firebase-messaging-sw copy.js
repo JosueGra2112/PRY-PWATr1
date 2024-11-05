@@ -14,6 +14,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
+
 // Precaching de Workbox para los archivos generados en build
 if (workbox) {
   console.log('Workbox cargado correctamente de Firebase');
