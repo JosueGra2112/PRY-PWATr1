@@ -96,4 +96,3 @@ jobs:
       # 2. Desplegar aplicación
       - name: Desplegar aplicación
         run: echo "Aquí iría la configuración para desplegar en el entorno de producción"
-        # Configura aquí el servicio de despliegue específico como Netlify, Vercel o Firebase
