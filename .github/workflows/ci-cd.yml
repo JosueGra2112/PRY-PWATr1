@@ -7,11 +7,13 @@ on:
       - master
       - development
       - feature/*
+      - Siga-yml
   pull_request:
     branches:
       - main
       - master
       - development
+      - Siga-yml
   workflow_dispatch: # Permite la ejecución manual del flujo de trabajo
 
 jobs:
