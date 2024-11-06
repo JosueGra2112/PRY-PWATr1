@@ -7,13 +7,11 @@ on:
       - master
       - development
       - feature/*
-      - Avance-Final
   pull_request:
     branches:
       - main
       - master
       - development
-      - Avance-Final
   workflow_dispatch: # Permite la ejecución manual del flujo de trabajo
 
 jobs:
