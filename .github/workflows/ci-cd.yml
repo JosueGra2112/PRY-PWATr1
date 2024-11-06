@@ -40,8 +40,7 @@ jobs:
 
       # 4. Configurar variables de entorno
       - name: Configurar variables de entorno
-        env:
-          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
+        run: echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
 
       # 5. Instalar dependencias
       - name: Instalar dependencias
@@ -89,10 +88,10 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/release/')
     
     steps:
+      # 1. Revisar código del repositorio (necesario para obtener los archivos de compilación)
       - name: Revisar código
         uses: actions/checkout@v2
-      
-      # Despliegue de la aplicación (ejemplo con mensaje de despliegue)
+
+      # 2. Desplegar aplicación
       - name: Desplegar aplicación
         run: echo "Aquí iría la configuración para desplegar en el entorno de producción"
-        # Configura aquí el servicio de despliegue específico como Netlify, Vercel o Firebase
