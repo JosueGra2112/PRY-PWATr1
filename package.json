@@ -80,7 +80,7 @@
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2"
   },
-  "scripts": {
+"scripts": {
     "start": "node scripts/start.js",
     "build": "CI=false node scripts/build.js && workbox injectManifest workbox-config.js",
     "test": "node scripts/test.js",
