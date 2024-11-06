@@ -7,7 +7,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
       <div className="container">
         <Link to="/" className="navbar-brand d-flex align-items-center">
-          <img src={esgharNAME} alt="esgharNAME" style={{ width: '150px' }} />
+          <img src={esgharNAME} alt="esgharNAME" style={{ width: '140px' }} />
         </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
