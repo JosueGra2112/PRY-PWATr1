@@ -8,7 +8,7 @@ import { getMessaging, getToken } from 'firebase/messaging';
 
 // Configuración de Firebase
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+  apiKey: "AIzaSyCJLJPTXJuQj9IVAPIa5jzAZ75FJ7QO8Bw",
   authDomain: "push-siga.firebaseapp.com",
   projectId: "push-siga",
   storageBucket: "push-siga.appspot.com",
