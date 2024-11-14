@@ -105,5 +105,4 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/  # Copia solo el contenido de ./build/
-          server-dir: /home/u316023526/domains/host8b.me/public_html/siga/  # Sin subcarpetas adicionales
+          local-dir: ./dist/  # Copia solo el contenido de ./build/
