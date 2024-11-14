@@ -99,23 +99,12 @@ jobs:
           name: build-artifact
           path: ./build
 
-      # 3. Instalar lftp (si es necesario)
-      - name: Instalar lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-
-      # 4. Verificar que las variables de entorno están configuradas
-      - name: Verificar variables de entorno
-        run: |
-          echo "Host: $FTP_HOST"
-          echo "Usuario: $FTP_USERNAME"
-          echo "Contraseña configurada"
-
-      # 5. Desplegar aplicación en Hostinger vía FTP
+      # 3. Desplegar a producción en Hostinger vía FTP
       - name: Desplegar aplicación en Hostinger
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          echo "Desplegando en el entorno de producción en Hostinger..."
-          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -R ./build /home/u316023526/domains/host8b.me/public_html/siga"
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/
+          server-dir: /home/u316023526/domains/host8b.me/public_html/siga
