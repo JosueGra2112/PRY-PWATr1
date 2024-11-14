@@ -106,4 +106,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
-          server-dir: /home/u316023526/domains/host8b.me/public_html/siga
+          server-dir: /home/u316023526/domains/host8b.me/public_html/siga/
