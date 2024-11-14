@@ -105,4 +105,5 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/  # Copia solo el contenido de ./build/
+          local-dir: ./build/
+          server-dir: siga/  # Ahora solo 'siga/' para evitar la creación de subdirectorios innecesarios
