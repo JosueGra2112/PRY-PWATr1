@@ -92,6 +92,19 @@ jobs:
       - name: Revisar código
         uses: actions/checkout@v2
 
-      # 2. Desplegar aplicación
-      - name: Desplegar aplicación
-        run: echo "Aquí iría la configuración para desplegar en el entorno de producción"
+      # 2. Descargar artefactos de compilación
+      - name: Descargar artefactos de compilación
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: ./build
+
+      # 3. Desplegar aplicación en Hostinger vía FTP
+      - name: Desplegar aplicación en Hostinger
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          echo "Desplegando en el entorno de producción en Hostinger..."
+          lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -R ./build /home/u316023526/domains/host8b.me/public_html/siga"
