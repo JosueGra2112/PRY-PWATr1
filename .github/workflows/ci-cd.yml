@@ -37,6 +37,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       # 4. Configurar variables de entorno
       - name: Configurar variables de entorno
         run: echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
@@ -104,5 +105,6 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/
+          local-dir: ./build/  # Asegúrate de que el contenido deseado esté en ./build/
           server-dir: /home/u316023526/domains/host8b.me/public_html/siga/
+          dangerous-clean-slate: true  # Limpiar el directorio remoto antes de cargar
