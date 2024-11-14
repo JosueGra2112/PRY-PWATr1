@@ -99,12 +99,11 @@ jobs:
           path: ./build
 
       # 3. Desplegar a producción en Hostinger vía FTP
-      - name: Desplegar aplicación en Hostinger
+      - name: Desplegar a producción en Hostinger vía FTP
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/  # Asegúrate de que el contenido deseado esté en ./build/
-          server-dir: /home/u316023526/domains/host8b.me/public_html/siga/
-          dangerous-clean-slate: true  # Limpiar el directorio remoto antes de cargar
+          local-dir: ./build/  # Copia solo el contenido de ./build/
+          server-dir: /home/u316023526/domains/host8b.me/public_html/siga/  # Sin subcarpetas adicionales
