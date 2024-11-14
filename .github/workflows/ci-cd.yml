@@ -85,7 +85,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-test # Este job se ejecutará después de que build-and-test sea exitoso
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/release/')
     
     steps:
       # 1. Revisar código del repositorio (necesario para obtener los archivos de compilación)
