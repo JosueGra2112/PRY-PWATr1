@@ -99,7 +99,18 @@ jobs:
           name: build-artifact
           path: ./build
 
-      # 3. Desplegar aplicación en Hostinger vía FTP
+      # 3. Instalar lftp (si es necesario)
+      - name: Instalar lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      # 4. Verificar que las variables de entorno están configuradas
+      - name: Verificar variables de entorno
+        run: |
+          echo "Host: $FTP_HOST"
+          echo "Usuario: $FTP_USERNAME"
+          echo "Contraseña configurada"
+
+      # 5. Desplegar aplicación en Hostinger vía FTP
       - name: Desplegar aplicación en Hostinger
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
