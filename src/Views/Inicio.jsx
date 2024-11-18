@@ -79,7 +79,7 @@ const Inicio = () => {
       <main className="App-main">
         <img src={lup} alt="Lup" className="logo-lup" />
         <div className="sigatext-container">
-          <h1>SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA</h1>
+          <h1>SISTEMA INTEGRAL DE GESTION ADMINISTRATIVA SIGA</h1>
           <img src={SIGA} alt="SIGA" className="siga" />
         </div>
       </main>
